@@ -1,0 +1,13 @@
+load("@rules_shell//shell:sh_test.bzl", "sh_test")
+
+genrule(
+    name = "gen494",
+    outs = ["out494.txt"],
+    cmd = "seq 1 500 > $@",
+)
+
+sh_test(
+    name = "test494",
+    srcs = ["//pkg:t.sh"],
+    data = [":gen494"],
+)

@@ -1,0 +1,8 @@
+# The only target in this package is an alias to a target in another package.
+# AliasConfiguredTarget.getOriginalLabel() returns //tools/aliased:aliased, so
+# BuildDriverFunction requests the PACKAGE node for //tools/aliased itself.
+alias(
+    name = "aliased",
+    actual = "//lib/real:real_bin",
+    visibility = ["//visibility:public"],
+)
